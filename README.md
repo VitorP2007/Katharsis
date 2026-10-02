@@ -6,6 +6,10 @@ O **Katharsis** é um projeto acadêmico que propõe uma plataforma web voltada 
 
 A plataforma busca incentivar o autoconhecimento emocional, disponibilizar informações educativas sobre saúde mental e facilitar o acesso às informações sobre o acolhimento psicológico institucional.
 
+## Como foi desenvolvido esse prototipo
+
+O desenvolvimento desse prototipo serve apenas para ilustrur como o sistema será de fato, ainda sem as funcionalidades completas, seguiu uma abordagem Spec-Driven Development (SDD) com o Spec Kit, aplicando as metodologias e conceitos, orientada por especificação: os requisitos foram organizados em planejamento e tarefas, e as funcionalidades foram implementadas e validadas manualmente por etapas. O GitHub Copilot foi utilizado como ferramenta de apoio para elaborar e revisar os artefatos do projeto, auxiliar na implementação e sugerir ajustes; as decisões finais e a validação do sistema permaneceram sob responsabilidade da equipe.
+
 ## 🎯 Objetivo do projeto
 
 Desenvolver uma aplicação web que contribua para a promoção do bem-estar emocional no ambiente acadêmico, oferecendo recursos de automonitoramento, psicoeducação e orientação sobre caminhos para buscar apoio institucional.
@@ -93,7 +97,7 @@ git clone https://github.com/VitorP2007/Katharsis.git
 Entre na pasta do projeto:
 
 ```bash
-cd mente-aberta
+cd katharsis
 ```
 
 ### 3. Crie um ambiente virtual
