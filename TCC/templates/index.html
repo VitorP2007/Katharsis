@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}Katharsis | Um momento para você{% endblock %}
+
+{% block content %}
+<section class="hero" id="inicio" aria-labelledby="hero-titulo">
+  <img class="hero-image" src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=2200&q=85" alt="" fetchpriority="high">
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="container site-container hero-content">
+    <p class="eyebrow hero-eyebrow"><span aria-hidden="true"></span> Bem-estar estudantil</p>
+    <h1 id="hero-titulo">Cuidar de você também faz parte da sua jornada acadêmica.</h1>
+    <p class="hero-copy">Um espaço para compreender suas emoções, aprender sobre saúde mental e conhecer caminhos para buscar apoio durante sua trajetória estudantil.</p>
+    <div class="hero-actions" aria-label="Explore o Katharsis">
+      <a class="btn btn-primary hero-button" href="{% url 'checkin:index' %}">Fazer meu check-in <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+      <a class="btn btn-outline-light hero-button" href="{% url 'conteudos:lista' %}">Explorar conteúdos <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+    </div>
+    <p class="hero-footnote"><i class="bi bi-shield-check" aria-hidden="true"></i> Um recurso complementar, informativo e sem diagnósticos.</p>
+  </div>
+  <span class="hero-caption" aria-hidden="true">UM PASSO DE CADA VEZ</span>
+</section>
+
+<section class="feature-section" id="proposta" aria-labelledby="feature-title">
+  <div class="container site-container">
+    <div class="section-heading">
+      <p class="eyebrow"><span aria-hidden="true"></span> Como podemos apoiar</p>
+      <h2 id="feature-title">Um ponto de partida para o seu bem-estar.</h2>
+      <p>Recursos próximos dos desafios e das diferentes experiências da vida acadêmica.</p>
+    </div>
+    <div class="feature-grid">
+      <article class="feature-card feature-perceba" id="checkin">
+        <div class="feature-card-top"><span class="feature-icon icon-green" aria-hidden="true"><i class="bi bi-sun"></i></span><span class="feature-number">01</span></div>
+        <h3>Perceba</h3>
+        <p>Faça uma pausa para perceber como você está durante a rotina de estudos, sem notas ou classificações clínicas.</p>
+      </article>
+      <article class="feature-card feature-aprenda">
+        <div class="feature-card-top"><span class="feature-icon icon-coral" aria-hidden="true"><i class="bi bi-journal-text"></i></span><span class="feature-number">02</span></div>
+        <h3>Aprenda</h3>
+        <p>Encontre informações sobre avaliações, prazos, descanso, autocuidado e outras situações da vida estudantil.</p>
+      </article>
+      <article class="feature-card feature-apoio" id="acolhimento">
+        <div class="feature-card-top"><span class="feature-icon icon-olive" aria-hidden="true"><i class="bi bi-chat-heart"></i></span><span class="feature-number">03</span></div>
+        <h3>Busque apoio</h3>
+        <p>Conheça orientações para considerar apoio quando dificuldades estiverem interferindo no cotidiano acadêmico.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="conteudos" aria-labelledby="content-title">
+  <div class="container site-container">
+    <div class="section-heading content-heading">
+      <p class="eyebrow"><span aria-hidden="true"></span> Para ler no seu tempo</p>
+      <h2 id="content-title">Informação que acompanha você.</h2>
+      <p>Temas educativos relacionados à rotina de estudos, sem presumir que toda trajetória seja igual.</p>
+    </div>
+    <div class="content-grid">
+      <article class="content-card">
+        <span class="content-card-icon icon-coral" aria-hidden="true"><i class="bi bi-cloud-haze2"></i></span>
+        <p class="content-topic">Bem-estar emocional</p>
+        <h3>Ansiedade</h3>
+        <p>Preocupações com provas e avaliações podem fazer parte de algumas trajetórias estudantis.</p>
+      </article>
+      <article class="content-card">
+        <span class="content-card-icon icon-green" aria-hidden="true"><i class="bi bi-moon-stars"></i></span>
+        <p class="content-topic">Rotina e cuidado</p>
+        <h3>Sono e saúde mental</h3>
+        <p>Como descanso e horários de estudo podem se relacionar com o bem-estar.</p>
+      </article>
+      <article class="content-card">
+        <span class="content-card-icon icon-olive" aria-hidden="true"><i class="bi bi-book"></i></span>
+        <p class="content-topic">Vida estudantil</p>
+        <h3>Saúde mental nos estudos</h3>
+        <p>Reflexões sobre rotina acadêmica, organização do tempo e atenção às próprias necessidades.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="support-section" aria-labelledby="support-title">
+  <div class="container site-container">
+    <div class="support-callout">
+      <div>
+        <p class="eyebrow"><span aria-hidden="true"></span> Acolhimento</p>
+        <h2 id="support-title">Precisando de apoio?</h2>
+        <p>Se dificuldades estiverem interferindo nos estudos ou em outras partes do cotidiano, conhecer possibilidades de acolhimento pode ser um primeiro passo.</p>
+      </div>
+      <a class="btn support-button" href="{% url 'acolhimento' %}">Conhecer o acolhimento <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</section>
+{% endblock %}

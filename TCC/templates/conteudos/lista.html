@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Conteúdos | Katharsis{% endblock %}
+
+{% block content %}
+<section class="library-page" aria-labelledby="library-title">
+  <div class="container site-container">
+    <a class="content-back" href="{% url 'inicio' %}"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar ao início</a>
+
+    <header class="library-heading">
+      <p class="eyebrow"><span aria-hidden="true"></span> Psicoeducação</p>
+      <h1 id="library-title">Conteúdos para ler no seu tempo.</h1>
+      <p>Informações simples sobre bem-estar emocional e vida estudantil.</p>
+    </header>
+
+    <form class="library-filters" method="get" action="{% url 'conteudos:lista' %}" role="search" aria-label="Buscar e filtrar conteúdos">
+      <div class="library-field">
+        <label for="busca-titulo">Buscar por título</label>
+        <input id="busca-titulo" name="q" type="search" value="{{ termo }}" maxlength="100" placeholder="Ex.: autocuidado">
+      </div>
+      <div class="library-field">
+        <label for="filtro-categoria">Filtrar por categoria</label>
+        <select id="filtro-categoria" name="categoria">
+          <option value="">Todas as categorias</option>
+          {% for categoria in categorias %}
+            <option value="{{ categoria.slug }}" {% if categoria_selecionada.pk == categoria.pk %}selected{% endif %}>{{ categoria.nome }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="library-filter-actions">
+        <button class="btn library-search-button" type="submit"><i class="bi bi-search" aria-hidden="true"></i> Buscar</button>
+        {% if termo or categoria_selecionada %}
+          <a class="library-clear" href="{% url 'conteudos:lista' %}">Limpar filtros</a>
+        {% endif %}
+      </div>
+    </form>
+
+    <div class="library-results-heading">
+      <h2>Materiais educativos</h2>
+      <p>{% if materiais|length == 1 %}1 conteúdo{% else %}{{ materiais|length }} conteúdos{% endif %}</p>
+    </div>
+
+    <div class="library-grid">
+      {% for conteudo in materiais %}
+        <article class="library-card">
+          <p class="library-category"><i class="bi bi-bookmark" aria-hidden="true"></i> {{ conteudo.categoria.nome }}</p>
+          <h3>{{ conteudo.titulo }}</h3>
+          <p class="library-summary">{{ conteudo.resumo }}</p>
+          <div class="library-card-footer">
+            <time datetime="{{ conteudo.data_publicacao|date:'c' }}">{{ conteudo.data_publicacao|date:'d/m/Y' }}</time>
+            <a class="library-read-button" href="{% url 'conteudos:detalhe' conteudo.pk %}">Ler conteúdo <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+      {% empty %}
+        <div class="library-empty">
+          <i class="bi bi-search" aria-hidden="true"></i>
+          <h3>Nenhum conteúdo encontrado</h3>
+          <p>Tente outro título ou escolha uma categoria diferente.</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    <p class="library-disclaimer"><i class="bi bi-info-circle" aria-hidden="true"></i> Estes materiais são informativos e não representam avaliação clínica nem substituem atendimento profissional.</p>
+  </div>
+</section>
+{% endblock %}

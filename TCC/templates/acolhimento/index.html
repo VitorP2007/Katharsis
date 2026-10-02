@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Acolhimento | Katharsis{% endblock %}
+
+{% block content %}
+<section class="acolhimento-page" aria-labelledby="acolhimento-title">
+  <div class="container site-container">
+    <a class="content-back" href="{% url 'inicio' %}"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar ao início</a>
+
+    <header class="acolhimento-heading">
+      <p class="eyebrow"><span aria-hidden="true"></span> Acolhimento</p>
+      <h1 id="acolhimento-title">Quando considerar buscar apoio</h1>
+      <p>Se dificuldades relacionadas à rotina acadêmica ou a outras partes da vida estiverem interferindo no seu cotidiano, pode ser importante conversar com alguém de confiança ou procurar orientação.</p>
+    </header>
+
+    <section class="acolhimento-guidance" aria-labelledby="guidance-title">
+      <span class="acolhimento-icon" aria-hidden="true"><i class="bi bi-chat-heart"></i></span>
+      <div>
+        <h2 id="guidance-title">Você não precisa encontrar um rótulo para pedir orientação.</h2>
+        <p>Provas, trabalhos, prazos, organização do tempo, relações e adaptação à instituição podem fazer parte de experiências estudantis diferentes. Se algo estiver ficando mais difícil e interferindo no seu cotidiano, uma conversa de apoio pode ser considerada.</p>
+      </div>
+    </section>
+
+    <section class="acolhimento-institutional" aria-labelledby="institutional-title">
+      <h2 id="institutional-title">Informações institucionais</h2>
+      <p>Os serviços, contatos e formas de acolhimento variam entre instituições. Esta área poderá receber informações oficiais quando forem fornecidas.</p>
+    </section>
+
+    <p class="acolhimento-disclaimer"><i class="bi bi-info-circle" aria-hidden="true"></i> Esta página é informativa e não substitui atendimento psicológico ou outros serviços profissionais.</p>
+  </div>
+</section>
+{% endblock %}

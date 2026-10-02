@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f2">
+  <meta name="description" content="Katharsis: um espaço de autopercepção, informação e orientação para o bem-estar estudantil.">
+  <title>{% block title %}Katharsis | Bem-estar estudantil{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="{% static 'css/estilo.css' %}" rel="stylesheet">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg" aria-label="Navegação principal">
+      <div class="container site-container">
+        <a class="navbar-brand brand-lockup" href="{% url 'inicio' %}" aria-label="Katharsis, início">
+          <span class="brand-mark" aria-hidden="true"><i class="bi bi-flower1"></i></span>
+          <span>Katharsis</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navegacao-principal" aria-controls="navegacao-principal" aria-expanded="false" aria-label="Abrir navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navegacao-principal">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link{% if request.resolver_match.url_name == 'inicio' %} active{% endif %}"{% if request.resolver_match.url_name == 'inicio' %} aria-current="page"{% endif %} href="{% url 'inicio' %}#inicio">Início</a></li>
+            <li class="nav-item"><a class="nav-link{% if request.resolver_match.namespace == 'checkin' %} active{% endif %}"{% if request.resolver_match.namespace == 'checkin' %} aria-current="page"{% endif %} href="{% url 'checkin:index' %}">Meu check-in</a></li>
+            <li class="nav-item"><a class="nav-link{% if request.resolver_match.namespace == 'conteudos' %} active{% endif %}"{% if request.resolver_match.namespace == 'conteudos' %} aria-current="page"{% endif %} href="{% url 'conteudos:lista' %}">Conteúdos</a></li>
+            <li class="nav-item"><a class="nav-link{% if request.resolver_match.url_name == 'acolhimento' %} active{% endif %}"{% if request.resolver_match.url_name == 'acolhimento' %} aria-current="page"{% endif %} href="{% url 'acolhimento' %}">Acolhimento</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="conteudo-principal">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-container footer-inner">
+      <a class="footer-brand" href="{% url 'inicio' %}">Katharsis<span aria-hidden="true">.</span></a>
+      <p>Um espaço de informação e autopercepção para a vida estudantil.</p>
+      <div class="footer-note">Conteúdo informativo e preventivo. Não realiza diagnóstico nem substitui atendimento profissional.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

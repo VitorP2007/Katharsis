@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Meu check-in | Katharsis{% endblock %}
+
+{% block content %}
+<section class="checkin-page" aria-labelledby="checkin-title">
+  <div class="container site-container">
+    <a class="checkin-back" href="{% url 'inicio' %}"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar ao início</a>
+
+    <div class="checkin-intro">
+      <p class="eyebrow"><span aria-hidden="true"></span> Meu check-in</p>
+      <h1 id="checkin-title">Como você está se sentindo hoje?</h1>
+      <p>Escolha a opção que mais representa sua percepção neste momento. Não há resposta certa ou errada.</p>
+    </div>
+
+    <div class="checkin-surface">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="checkin-success" role="status">
+            <i class="bi bi-check-circle" aria-hidden="true"></i>
+            <span>{{ message }}</span>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      <form method="post" action="{% url 'checkin:index' %}">
+        {% csrf_token %}
+        <fieldset class="checkin-fieldset">
+          <legend class="checkin-legend">Escolha uma opção</legend>
+          <div class="emotion-options">
+            {% for choice in form.percepcao %}
+              <label class="emotion-option">
+                {{ choice.tag }}
+                <span>{{ choice.choice_label }}</span>
+              </label>
+            {% endfor %}
+          </div>
+          {% if form.percepcao.errors %}
+            <p class="field-error" role="alert">Selecione uma opção para continuar.</p>
+          {% endif %}
+        </fieldset>
+
+        <div class="observation-field">
+          <label for="{{ form.observacao.id_for_label }}">Quer registrar alguma observação?</label>
+          <p id="observacao-ajuda">Opcional. Evite escrever nome, matrícula ou outros dados de identificação.</p>
+          {{ form.observacao }}
+          {% if form.observacao.errors %}
+            <p class="field-error" role="alert">A observação deve ter até 500 caracteres.</p>
+          {% endif %}
+        </div>
+
+        <p class="checkin-privacy"><i class="bi bi-lock" aria-hidden="true"></i> O registro é salvo sem nome, matrícula ou vínculo a uma conta. Esta tela não oferece histórico pessoal.</p>
+        <button class="btn btn-primary checkin-submit" type="submit">Salvar meu check-in <i class="bi bi-arrow-right" aria-hidden="true"></i></button>
+      </form>
+    </div>
+
+    <p class="checkin-disclaimer"><i class="bi bi-info-circle" aria-hidden="true"></i> Este registro representa apenas sua autopercepção. O Katharsis não gera diagnóstico, pontuação clínica ou conclusão sobre sua saúde mental, e não substitui atendimento profissional.</p>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ conteudo.titulo }} | Katharsis{% endblock %}
+
+{% block content %}
+<section class="article-page" aria-labelledby="article-title">
+  <div class="container site-container">
+    <a class="content-back" href="{% url 'conteudos:lista' %}"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar aos conteúdos</a>
+
+    <article class="article-detail">
+      <p class="article-category"><i class="bi bi-bookmark" aria-hidden="true"></i> {{ conteudo.categoria.nome }}</p>
+      <h1 id="article-title">{{ conteudo.titulo }}</h1>
+      <p class="article-summary">{{ conteudo.resumo }}</p>
+      <p class="article-date">Publicado em <time datetime="{{ conteudo.data_publicacao|date:'c' }}">{{ conteudo.data_publicacao|date:'d/m/Y' }}</time></p>
+      <div class="article-body">{{ conteudo.texto|linebreaks }}</div>
+      <p class="article-disclaimer"><i class="bi bi-info-circle" aria-hidden="true"></i> Conteúdo educativo e informativo. Não é uma avaliação clínica e não substitui atendimento profissional.</p>
+    </article>
+
+    <a class="btn article-back-button" href="{% url 'conteudos:lista' %}"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar aos conteúdos</a>
+  </div>
+</section>
+{% endblock %}
